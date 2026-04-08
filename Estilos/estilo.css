@@ -1,0 +1,90 @@
+/* RESET BÁSICO Y VARIABLES */
+/* Esto elimina los márgenes por defecto del navegador y asegura 
+   que el tamaño de las cajas incluya el borde y el padding (box-sizing) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definimos algunas variables de color*/
+:root {
+    --color-fondo: #44789b;
+    --color-texto: #131313;
+    --color-primario: #0a0344;
+    --color-tarjeta: #ffffff;
+    --sombra: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    padding: 20px; /* Un poco de espacio alrededor de la página */
+}
+
+/* ESTILOS DE ENCABEZADO Y PIE DE PÁGINA */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--color-primario);
+    color: white;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* LAYOUT RESPONSIVE */
+main {
+    /* Activamos CSS Grid para el contenedor principal */
+    display: grid;
+    
+    /* LÍNEA CLAVE PARA LAS COLUMNAS RESPONSIVAS:
+       - auto-fit: Crea tantas columnas como entren en la pantalla.
+       - minmax(300px, 1fr): Cada columna medirá como mínimo 300px. 
+         Si hay espacio de sobra, se expandirán (1fr) para ocuparlo.
+       Resultado: En móviles (menos de 300px) se apilan. En PC, se hacen columnas. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+    /* Espacio entre las columnas y filas */
+    gap: 20px; 
+    
+    /* Ancho máximo para que en pantallas gigantes no se estire infinitamente */
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor main en la pantalla */
+}
+
+/* ESTILOS DE LAS SECCIONES */
+/* Aplicamos un estilo de "tarjeta" a cada sección (Perfil, Habilidades, etc.) */
+section {
+    background-color: var(--color-tarjeta);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    transition: transform 0.3s ease; /* Pequeña animación */
+}
+
+/* Un efecto visual sutil: al pasar el mouse, la tarjeta se levanta un poco */
+section:hover {
+    transform: translateY(-5px);
+}
+
+section h2 {
+    color: var(--color-primario);
+    border-bottom: 2px solid var(--color-primario);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* Estilos extra para listas (para Habilidades y Experiencia) */
+ul {
+    list-style-position: inside;
+}
