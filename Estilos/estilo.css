@@ -17,11 +17,11 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--color-fondo);
     color: var(--color-texto);
     line-height: 1.6;
-    padding: 20px; /* Un poco de espacio alrededor de la página */
+    padding: 20px;
 }
 
 /* ESTILOS DE ENCABEZADO Y PIE DE PÁGINA */
@@ -72,7 +72,7 @@ section {
     transition: transform 0.3s ease; /* Pequeña animación */
 }
 
-/* Un efecto visual sutil: al pasar el mouse, la tarjeta se levanta un poco */
+/* Efecto visual: al pasar el mouse la tarjeta se levanta un poco */
 section:hover {
     transform: translateY(-5px);
 }
@@ -85,6 +85,37 @@ section h2 {
 }
 
 /* Estilos extra para listas (para Habilidades y Experiencia) */
-ul {
-    list-style-position: inside;
+section ul, 
+section ol {
+    list-style-type: none; /* Elimina los puntos y los números */
+    padding-left: 0;       /* Quita el espacio (sangría) a la izquierda */
+    margin: 0;             /* Limpia los márgenes por defecto */
+}
+
+/* Modo Oscuro */
+.checkbox-oculto {
+    display: none;
+}
+.btn-tema {
+    padding: 8px 15px;
+    border-radius: 20px;
+    background-color: var(--color-tarjeta);
+    color: var(--color-texto);
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    user-select: none; /* Evita que se seleccione el texto al hacer doble clic */
+}
+.btn-tema::before {
+    content: '🌙 Modo Oscuro';
+}
+#dark-mode-toggle:checked + .btn-tema::before {
+    content: '☀️ Modo Claro';
+}
+body:has(#dark-mode-toggle:checked) {
+    --color-fondo: #121212;      
+    --color-texto: #e0e0e0;      
+    --color-primario: #5b8def;   
+    --color-tarjeta: #1e1e1e;    
+    --sombra: 0 4px 6px rgba(0,0,0,0.5); 
 }
